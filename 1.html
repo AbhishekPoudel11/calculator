@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="register">
+        <h1 align="center">Registration Form</h1>
+      <table align="center">
+          <tr>
+              <td colspan="2"><span id="err"></span></td>
+          </tr>
+          <tr>
+              <td>
+                  <label>User Name</label>
+              </td>
+              <td>
+                  <input type="text" id="uname" name="uname">
+              </td>
+          </tr>
+          <tr>
+            <td>
+                <label>Password</label>
+            </td>
+            <td>
+                <input type="password" id="pwd" name="pwd">
+            </td>
+            </tr>
+            <tr>
+                <td>
+                <label>Email</label>
+            </td>
+            <td>
+                <input type="text" id="email" name="email">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Contact No</label>
+            </td>
+            <td>
+                <input type="text" id="con" name="con">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                
+            </td>
+            <td>
+                <input type="button" value="signup" id="submit">
+            </td>
+        </tr>
+      </table>  
+    </form>
+    <script>
+        var btn =document.getElementById('submit');
+        
+        btn.onclick=function()
+        {
+            var uname=document.getElementById('uname').value;
+            var pwd=document.getElementById('pwd').value;
+            var email=document.getElementById('email').value;
+            var con=document.getElementById('con').value;
+            var msg="";
+
+            if(uname=="")
+            {
+                msg+="Username Required<br>";
+            }
+            if(pwd=="")
+            {
+                msg+="password is required<br>";
+            }
+            else
+            {
+                if(pwd.length<8)
+                {
+                    msg+="password length must be at least 8 character<br>"
+                }
+
+            }
+            if(email=="")
+            {
+                msg+="Email Required<br>";   
+            }
+            else
+            {
+                if(!(/@/g.test(email)))
+                {
+                    msg+="Email Must contain @ <br>";   
+                }
+            }
+            if(con=="")
+            {
+                msg+="Contact Number is Required<br>";
+            }
+            else
+            {
+                if(con.length!=10)
+                {
+                    msg+="Contact Number must be of 10 digit<br>";
+                }
+                else
+                {
+                    if(!(/\d\d\d\d\d\d\d\d\d\d/g.test(con)))
+                    {
+                        msg+="Contact Number must be nemeric<br>";   
+                    }
+                }
+            }
+            if(msg!="")
+            {
+                document.getElementById('err').innerHTML=msg;
+                document.getElementById('err').style.color="red";
+            }
+            else
+            {
+                document.getElementById('err').innerHTML="Validated success fully";
+                document.getElementById('err').style.color="green";
+                document.getElementById('register').reset();
+            }
+
+        }
+    </script>
+</body>
+</html>
